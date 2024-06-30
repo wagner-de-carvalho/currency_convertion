@@ -7,6 +7,8 @@ defmodule CurrencyConvertionWeb.Router do
 
   scope "/api", CurrencyConvertionWeb do
     pipe_through :api
+
+    get("/users/:user_id/transactions", UsersController, :transactions)
   end
 
   # Enable LiveDashboard in development
