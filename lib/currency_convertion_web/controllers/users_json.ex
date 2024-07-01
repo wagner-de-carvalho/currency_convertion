@@ -8,6 +8,12 @@ defmodule CurrencyConvertionWeb.UsersJSON do
     %{transactions: data(transactions)}
   end
 
+  def create(%{transaction: transaction}) do
+    data(transaction)
+    |> Map.put(:transaction_id, transaction.id)
+    |> Map.put(:destiny_currency, transaction.destiny_currency)
+  end
+
   defp data(%Transaction{} = transaction) do
     %{
       user_id: transaction.user_id,

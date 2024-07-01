@@ -34,21 +34,23 @@ defmodule CurrencyConvertion.Users.Users do
   end
 
   defp add(user, transaction) do
-    transactions =
-      user.transactions ++
-        [
-          %Transaction{
-            origin_currency: transaction.from,
-            origin_amount: transaction.amount,
-            destiny_currency: transaction.to,
-            rate: transaction.rate,
-            amount: transaction.result,
-            user_id: user.id
-          }
-        ]
+    transaction = [
+      %Transaction{
+        origin_currency: transaction.from,
+        origin_amount: transaction.amount,
+        destiny_currency: transaction.to,
+        rate: transaction.rate,
+        amount: transaction.result,
+        user_id: user.id
+      }
+    ]
 
     Changeset.change(user)
-    |> Changeset.put_embed(:transactions, transactions)
+    |> Changeset.put_embed(:transactions, user.transactions ++ transaction)
     |> Repo.update()
+    |> then(fn
+      {:ok, user} -> List.last(user.transactions)
+      {:error, _} = error -> error
+    end)
   end
 end

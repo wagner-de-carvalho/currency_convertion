@@ -15,12 +15,9 @@ defmodule CurrencyConvertion.ApiLayer.Client do
   def call(from, to, amount \\ 1)
 
   def call(from, to, amount) do
-    IO.inspect(from, label: "CALL FROM >> ")
-
     "#{@base_url}?to=#{to}&from=#{from}&amount=#{amount}"
     |> get()
     |> handle_call()
-    |> IO.inspect(label: "HANDLE >> ")
   end
 
   defp handle_call({:ok, %Env{body: body, status: 200}}) do

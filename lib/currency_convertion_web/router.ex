@@ -5,10 +5,15 @@ defmodule CurrencyConvertionWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", CurrencyConvertionWeb do
-    pipe_through :api
+  pipeline :exists_user_id do
+    plug CurrencyConvertionWeb.Plugs.CheckUserId
+  end
 
-    get("/users/:user_id/transactions", UsersController, :transactions)
+  scope "/api", CurrencyConvertionWeb do
+    pipe_through [:api, :exists_user_id]
+
+    get("/users/:user_id/transactions", UsersController, :list)
+    post("/users/transactions", UsersController, :create)
   end
 
   # Enable LiveDashboard in development
