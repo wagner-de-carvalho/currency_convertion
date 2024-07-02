@@ -12,10 +12,10 @@ defmodule CurrencyConvertion.ApiLayer.Client do
   plug(Tesla.Middleware.JSON)
 
   @spec call(String.t(), String.t(), integer()) :: {:ok, map()} | {:error, map()}
-  def call(from, to, amount \\ 1)
+  def call(from, to, amount \\ 1, url \\ @base_url)
 
-  def call(from, to, amount) do
-    "#{@base_url}?to=#{to}&from=#{from}&amount=#{amount}"
+  def call(from, to, amount, url) do
+    "#{url}?to=#{to}&from=#{from}&amount=#{amount}"
     |> get()
     |> handle_call()
   end
