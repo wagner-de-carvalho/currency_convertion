@@ -41,7 +41,9 @@ defmodule CurrencyConvertion.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:tesla, "~> 1.9"}
+      {:tesla, "~> 1.9"},
+      {:ex_machina, "~> 2.8", only: :test},
+      {:bypass, "~> 2.1", only: :test}
     ]
   end
 
