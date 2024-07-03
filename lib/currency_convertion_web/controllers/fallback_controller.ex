@@ -1,10 +1,9 @@
 defmodule CurrencyConvertionWeb.FallbackController do
   @moduledoc """
-  Falls back to this module when user_controller returns errors
+  Falls back to this module when transactions_controller returns errors
   """
   use CurrencyConvertionWeb, :controller
   alias CurrencyConvertionWeb.ErrorJSON
-  alias Ecto.Changeset
 
   def call(conn, {:error, :not_found}) do
     conn
