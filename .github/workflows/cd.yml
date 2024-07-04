@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-python@v4
         with:
-          python-version: 3.10
+          python-version: "3.10"
       - uses: mhanberg/gigalixir-action@v0.6.1
         with:
           GIGALIXIR_USERNAME: ${{ secrets.GIGALIXIR_USERNAME }}
