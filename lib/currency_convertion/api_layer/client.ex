@@ -3,17 +3,17 @@ defmodule CurrencyConvertion.ApiLayer.Client do
   Requests to APILayer currency exchange API
   """
   use Tesla
+  alias CurrencyConvertion.ApiLayer.ClientBehaviour
   alias Tesla.Env
 
-  @base_url Application.compile_env(:currency_convertion, :base_url)
+  @behaviour ClientBehaviour
+
   @currency_api_key Application.compile_env(:currency_convertion, :exchange_api_key)
 
   plug(Tesla.Middleware.Headers, [{"apikey", @currency_api_key}])
   plug(Tesla.Middleware.JSON)
 
-  @spec call(String.t(), String.t(), integer()) :: {:ok, map()} | {:error, map()}
-  def call(from, to, amount \\ 1, url \\ @base_url)
-
+  @impl ClientBehaviour
   def call(from, to, amount, url) do
     "#{url}?to=#{to}&from=#{from}&amount=#{amount}"
     |> get()
@@ -34,4 +34,5 @@ defmodule CurrencyConvertion.ApiLayer.Client do
   end
 
   defp handle_call({:ok, %Env{body: body, status: _}}), do: {:error, body}
+  defp handle_call(error), do: {:error, error}
 end
