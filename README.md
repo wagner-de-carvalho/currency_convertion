@@ -46,3 +46,5 @@ Take the following steps to start the project on **local environment**:
 5 - Create the database: `mix ecto.setup` or `mix ecto.create, mix ecto.migrate`;
 6 - Run the **seeds** file to create users: `mix run priv/repo/seeds.exs`;
 7 - Start the application: `iex -S mix phx.server`.
+
+### Gigalixir
