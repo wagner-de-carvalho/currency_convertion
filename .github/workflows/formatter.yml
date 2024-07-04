@@ -26,6 +26,9 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-mix-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
       - name: Install Mix Dependencies
         if: steps.mix-cache-format.outputs.cache-hit != 'true'
-        run: mix deps.get
+        run: |
+          EXCHANGE_API_KEY=${{ vars.EXCHANGE_API_KEY }}
+          echo This is the key: $EXCHANGE_API_KEY
+          mix deps.get
       - name: ===> FORMAT
         run: mix format --check-formatted
