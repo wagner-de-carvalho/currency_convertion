@@ -29,7 +29,11 @@ Another motivation is the fact that this programmer has already had knowledge of
 ### Libraries
 - tesla = Tesla is an HTTP client loosely based on Faraday. It embraces the concept of middleware when processing the request/response cycle.
 - ex_machina = ExMachina makes it easy to create test data and associations.
-- bypass = Bypass is an OTP application that masquerades as an external server listening for and responding to requests. 
+- bypass = Bypass is an OTP application that masquerades as an external server listening for and responding to requests.
+
+### External API
+In this project we are using the `Exchange Rates Data` API to delivering exchanging rates data for more than 170 world currencies.
+[APILayer documentation](https://apilayer.com/marketplace/exchangerates_data-api#endpoints)
 
 ## Separation of layers
 - Domain layer = this is the core of the application, where user and transaction entities are defined as well as the repository.
@@ -37,7 +41,7 @@ Another motivation is the fact that this programmer has already had knowledge of
 - Presentation layer = this is the layer where we have controllers and views, responsible for receiving requests and displaying relevant data to the user.
 
 ## Start the project
-To run this project, you must have postgres database installed and running, Elixir and Phoenix framework.
+To run this project **locally**, you must have **postgres** database installed (or docker) and running, **Elixir** and **Phoenix** framework.
 Take the following steps to start the project on **local environment**:
 1 - Clone the project: `git clone https://github.com/wagner-de-carvalho/currency_convertion.git`
 2 - Donwnload the dependencies: `mix deps.get`
@@ -48,3 +52,5 @@ Take the following steps to start the project on **local environment**:
 7 - Start the application: `iex -S mix phx.server`.
 
 ### Gigalixir
+Gigalixir is a Platform as a Service designed by and for Elixir developers.
+The application was ***deployed*** and is currently running remotely at **Gigalixir** on `https://currency-convertion.gigalixirapp.com/`
