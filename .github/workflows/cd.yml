@@ -4,10 +4,9 @@ on:
   push:
     branches:
       - main
-
 env:
-  EXCHANGE_API_KEY: ${{ vars.EXCHANGE_API_KEY }}
-  
+  EXCHANGE_API_KEY: ${{ secrets.EXCHANGE_API_KEY }}
+
 jobs:
   deploy:
     if: github.ref == 'refs/heads/main'
