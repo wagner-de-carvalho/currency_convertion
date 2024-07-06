@@ -6,12 +6,12 @@ defmodule CurrencyConvertion.ApiLayer.Client do
   alias CurrencyConvertion.ApiLayer.ClientBehaviour
   alias Tesla.Env
 
-  @behaviour ClientBehaviour
-
   @currency_api_key Application.compile_env(:currency_convertion, :exchange_api_key)
 
   plug(Tesla.Middleware.Headers, [{"apikey", @currency_api_key}])
   plug(Tesla.Middleware.JSON)
+
+  @behaviour ClientBehaviour
 
   @impl ClientBehaviour
   def call(from, to, amount, url) do
