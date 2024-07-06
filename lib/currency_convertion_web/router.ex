@@ -30,8 +30,7 @@ defmodule CurrencyConvertionWeb.Router do
         version: "0.1.0",
         title: "Currency Convertion"
       },
-      tags: [
-      ]
+      tags: []
     }
   end
 

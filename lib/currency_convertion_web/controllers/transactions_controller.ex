@@ -57,6 +57,44 @@ defmodule CurrencyConvertionWeb.TransactionsController do
     }
   end
 
+  swagger_path(:create) do
+    post("/transactions")
+    summary("Create a new transaction")
+    description("Adds transaction to an user")
+    consumes("application/json")
+    produces("application/json")
+
+    parameter(:transaction, :body, Schema.ref(:TransactionRequest), "The transaction details",
+      example: %{
+        transaction: %{user_id: 1, from: "BRL", to: "USD", amount: 3}
+      }
+    )
+
+    response(201, "Transaction created OK", Schema.ref(:TransactionResponse),
+      example: %{
+        data: %{
+          user_id: 1,
+          transaction_id: "7da853f7-c6ee-464b-85b6-b39fda6e8110",
+          destiny_currency: "USD",
+          origin_currency: "BRL",
+          rate: 5.47542,
+          date_time: "2024-07-06T12:36:00"
+        }
+      }
+    )
+
+    response(404, "User not found", %{error: :not_found})
+
+    response(400, "Invalid amount", %{
+      error: %{
+        error: %{
+          code: "invalid_conversion_amount",
+          message: "You have not specified an amount to be converted. [Example: amount=5]"
+        }
+      }
+    })
+  end
+
   def create(conn, params) do
     url = Map.get(params, "url", @base_url)
 

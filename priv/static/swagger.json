@@ -97,6 +97,78 @@
     "version": "0.1.0"
   },
   "paths": {
+    "/transactions": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Adds transaction to an user",
+        "operationId": "CurrencyConvertionWeb.TransactionsController.create",
+        "parameters": [
+          {
+            "description": "The transaction details",
+            "in": "body",
+            "name": "transaction",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/TransactionRequest"
+            },
+            "x-example": {
+              "transaction": {
+                "amount": 3,
+                "from": "BRL",
+                "to": "USD",
+                "user_id": 1
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Transaction created OK",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "date_time": "2024-07-06T12:36:00",
+                  "destiny_currency": "USD",
+                  "origin_currency": "BRL",
+                  "rate": 5.47542,
+                  "transaction_id": "7da853f7-c6ee-464b-85b6-b39fda6e8110",
+                  "user_id": 1
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/TransactionResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid amount",
+            "schema": {
+              "error": {
+                "error": {
+                  "code": "invalid_conversion_amount",
+                  "message": "You have not specified an amount to be converted. [Example: amount=5]"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "schema": {
+              "error": "not_found"
+            }
+          }
+        },
+        "summary": "Create a new transaction",
+        "tags": [
+          "Transactions"
+        ]
+      }
+    },
     "/{user_id}/transactions": {
       "get": {
         "description": "List all user's transactions in the database",
