@@ -19,7 +19,7 @@ defmodule CurrencyConvertionWeb.TransactionsJSON do
       user_id: transaction.user_id,
       origin_currency: transaction.origin_currency,
       origin_amount: transaction.origin_amount,
-      destiny_amount_amount: transaction.amount,
+      destiny_amount: transaction.amount,
       destiny_currency: transaction.destiny_currency,
       rate: transaction.rate,
       date_time: transaction.inserted_at

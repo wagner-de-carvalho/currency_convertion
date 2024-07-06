@@ -75,9 +75,11 @@ defmodule CurrencyConvertionWeb.TransactionsController do
         data: %{
           user_id: 1,
           transaction_id: "7da853f7-c6ee-464b-85b6-b39fda6e8110",
-          destiny_currency: "USD",
-          origin_currency: "BRL",
-          rate: 5.47542,
+          destiny_currency: "BRL",
+          origin_currency: "EUR",
+          origin_amount: 3,
+          destiny_amount: 17.828463,
+          rate: 5.942821,
           date_time: "2024-07-06T12:36:00"
         }
       }
@@ -121,6 +123,7 @@ defmodule CurrencyConvertionWeb.TransactionsController do
             date_time: "2024-07-06T05:14:35",
             destiny_currency: "BRL",
             origin_amount: 2,
+            destiny_amount: 11.852612,
             origin_currency: "EUR",
             rate: 5.926306,
             transaction_id: "6fdee579-a151-4135-8d01-1db1ba14613c",
@@ -130,6 +133,7 @@ defmodule CurrencyConvertionWeb.TransactionsController do
             date_time: "2024-07-06T05:20:22",
             destiny_currency: "BRL",
             origin_amount: 3,
+            destiny_amount: 16.380612,
             origin_currency: "USD",
             rate: 5.460204,
             transaction_id: "a7f57243-11f5-4e3a-bdcc-91ab1e6b7e14",
