@@ -8,6 +8,7 @@ defmodule CurrencyConvertion.MixProject do
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
+      compilers: [:phoenix_swagger] ++ Mix.compilers(),
       aliases: aliases(),
       deps: deps()
     ]
@@ -46,7 +47,9 @@ defmodule CurrencyConvertion.MixProject do
       {:ex_machina, "~> 2.8", only: :test},
       {:bypass, "~> 2.1", only: :test},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
-      {:mox, "~> 1.1"}
+      {:mox, "~> 1.1"},
+      {:phoenix_swagger, "~> 0.8.3"},
+      {:ex_json_schema, "~> 0.5"}
     ]
   end
 
@@ -62,7 +65,8 @@ defmodule CurrencyConvertion.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": ["esbuild default --minify", "phx.digest"],
+      swagger: ["phx.swagger.generate priv/static/swagger.json"]
     ]
   end
 end

@@ -1,0 +1,164 @@
+{
+  "basePath": "/api/users",
+  "definitions": {
+    "Transaction": {
+      "description": "Exchange transaction",
+      "properties": {
+        "date_time": {
+          "description": "Transaction timestamp",
+          "format": "datetime",
+          "type": "string"
+        },
+        "destiny_currency": {
+          "description": "To",
+          "type": "string"
+        },
+        "origin_amount": {
+          "description": "Amount",
+          "type": "string"
+        },
+        "origin_currency": {
+          "description": "From",
+          "type": "string"
+        },
+        "rate": {
+          "description": "Transaction rate",
+          "type": "number"
+        },
+        "transaction_id": {
+          "description": "Transaction id",
+          "type": "string"
+        },
+        "user_id": {
+          "description": "User id",
+          "type": "integer"
+        }
+      },
+      "title": "Transaction",
+      "type": "object"
+    },
+    "TransactionRequest": {
+      "description": "Request to create a transaction",
+      "properties": {
+        "amount": {
+          "description": "Amount",
+          "type": "integer"
+        },
+        "from": {
+          "description": "Origin currency",
+          "type": "string"
+        },
+        "to": {
+          "description": "Destiny currency",
+          "type": "string"
+        },
+        "user_id": {
+          "description": "User id",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "user_id",
+        "from",
+        "amount",
+        "to"
+      ],
+      "title": "TransactionRequest",
+      "type": "object"
+    },
+    "TransactionResponse": {
+      "description": "Response schema for single transaction",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/Transaction",
+          "description": "The transaction details"
+        }
+      },
+      "title": "TransactionResponse",
+      "type": "object"
+    },
+    "TransactionsResponse": {
+      "description": "Response schema for transactions array",
+      "properties": {
+        "data": {
+          "description": "The user's transactions details",
+          "items": {
+            "$ref": "#/definitions/Transaction"
+          },
+          "type": "array"
+        }
+      },
+      "title": "TransactionsResponse",
+      "type": "object"
+    }
+  },
+  "info": {
+    "title": "Currency Convertion",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/{user_id}/transactions": {
+      "get": {
+        "description": "List all user's transactions in the database",
+        "operationId": "CurrencyConvertionWeb.TransactionsController.list",
+        "parameters": [
+          {
+            "description": "User ID",
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "type": "integer",
+            "x-example": 1
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "date_time": "2024-07-06T05:14:35",
+                    "destiny_currency": "BRL",
+                    "origin_amount": 2,
+                    "origin_currency": "EUR",
+                    "rate": 5.926306,
+                    "transaction_id": "6fdee579-a151-4135-8d01-1db1ba14613c",
+                    "user_id": 1
+                  },
+                  {
+                    "date_time": "2024-07-06T05:20:22",
+                    "destiny_currency": "BRL",
+                    "origin_amount": 3,
+                    "origin_currency": "USD",
+                    "rate": 5.460204,
+                    "transaction_id": "a7f57243-11f5-4e3a-bdcc-91ab1e6b7e14",
+                    "user_id": 1
+                  }
+                ]
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/TransactionsResponse"
+            }
+          },
+          "404": {
+            "description": "not_found",
+            "schema": {
+              "error": "not_found"
+            }
+          }
+        },
+        "summary": "List transactions",
+        "tags": [
+          "Transactions"
+        ]
+      }
+    }
+  },
+  "swagger": "2.0",
+  "tags": []
+}

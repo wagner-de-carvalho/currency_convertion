@@ -16,6 +16,25 @@ defmodule CurrencyConvertionWeb.Router do
     post("/users/transactions", TransactionsController, :create)
   end
 
+  scope "/api/swagger" do
+    forward "/", PhoenixSwagger.Plug.SwaggerUI,
+      otp_app: :currency_convertion,
+      swagger_file: "swagger.json"
+  end
+
+  # Swagger
+  def swagger_info do
+    %{
+      basePath: "/api/users",
+      info: %{
+        version: "0.1.0",
+        title: "Currency Convertion"
+      },
+      tags: [
+      ]
+    }
+  end
+
   # Enable LiveDashboard in development
   if Application.compile_env(:currency_convertion, :dev_routes) do
     # If you want to use the LiveDashboard in production, you should put

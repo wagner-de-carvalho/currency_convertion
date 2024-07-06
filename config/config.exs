@@ -28,6 +28,22 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# swagger config.exs
+config :currency_convertion, CurrencyConvertionWeb.Endpoint, url: [host: "localhost"]
+# "host": "localhost:4000" in generated swagger
+
+# swagger
+config :currency_convertion, :phoenix_swagger,
+  swagger_files: %{
+    "priv/static/swagger.json" => [
+      # phoenix routes will be converted to swagger paths
+      router: CurrencyConvertionWeb.Router
+    ]
+  }
+
+# swaager Jason
+config :phoenix_swagger, json_library: Jason
+
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.14.0",
