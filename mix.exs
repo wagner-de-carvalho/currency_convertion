@@ -10,7 +10,14 @@ defmodule CurrencyConvertion.MixProject do
       start_permanent: Mix.env() == :prod,
       compilers: [:phoenix_swagger] ++ Mix.compilers(),
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -50,7 +57,8 @@ defmodule CurrencyConvertion.MixProject do
       {:mox, "~> 1.1"},
       {:phoenix_swagger, "~> 0.8.3"},
       {:ex_json_schema, "~> 0.5"},
-      {:ex_doc, "~> 0.31", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.31", only: :dev, runtime: false},
+      {:excoveralls, "~> 0.18", only: :test}
     ]
   end
 
