@@ -11,4 +11,11 @@ defmodule CurrencyConvertionWeb.FallbackController do
     |> put_view(json: ErrorJSON)
     |> render(:error, error: :not_found)
   end
+
+  def call(conn, {:error, reason}) do
+    conn
+    |> put_status(:bad_request)
+    |> put_view(json: ErrorJSON)
+    |> render(:error, error: reason)
+  end
 end
