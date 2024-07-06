@@ -9,11 +9,12 @@ The purpose of this API is to present a solution that meets the requirements pro
 - create tests for these functionalities, according to the problem description.
 
 ## Features
-In this project we will not provide an API to **create users**, since the purpose of this API is to exchange currencies. We will use a ***seed file***, which will create some users.
+In this project we will not provide an API to **create users**, since the purpose of this API is to exchange currencies. We will use a ***seed file***, which will create some users locally. For the project deployed on Gigalixir (Platform as a Service), we already have **four users inserted** whose ID's are ranging from 1 to 4.
+
 **Main features**:
 - List user's transactions = it returns a list containing all transactions performed by a certain user.
-- Add a new transaction user's transactions = adds a new transaction to a certain user.
-- Get user = fetches a user, based on it's id.
+- Add a new transaction to user's transactions = adds a new transaction to a certain user.
+- Get user = fetches a user, based on it's ID.
 - APILayer client = query external currency API to obtain conversion rates and amount values.
 
 ## Motivation for the main technology
@@ -26,10 +27,23 @@ Another motivation is the fact that this programmer has already had knowledge of
 - Ecto = Ecto is a toolkit for data mapping and language integrated query for Elixir;
 - `Postgres` = is a powerful, open source object-relational database.
 
+***Technologies documentation***
+[Ecto](https://hexdocs.pm/ecto/3.10.3/Ecto.html)
+[Elixir](https://hexdocs.pm/elixir/1.14.2/Kernel.html)
+[Phoenix framework](https://hexdocs.pm/phoenix/1.7.7/overview.html)
+[Postgres](https://www.postgresql.org/docs/current/)
+
 ### Libraries
 - tesla = Tesla is an HTTP client loosely based on Faraday. It embraces the concept of middleware when processing the request/response cycle.
 - ex_machina = ExMachina makes it easy to create test data and associations.
-- bypass = Bypass is an OTP application that masquerades as an external server listening for and responding to requests.
+- bypass = is an OTP application that masquerades as an external server listening for and responding to requests. 
+- Mox = is a library for defining concurrent mocks in Elixir.
+
+**Libraries documentation***
+[Bypass documentation](https://hexdocs.pm/bypass/Bypass.html)
+[ExMachina documentation](https://hexdocs.pm/ex_machina/index.html)
+[Mox documentation](https://hexdocs.pm/mox/Mox.html)
+[Tesla documentation](https://hexdocs.pm/tesla/readme.html)
 
 ### External API
 In this project we are using the `Exchange Rates Data` API to delivering exchanging rates data for more than 170 world currencies.
@@ -53,4 +67,6 @@ Take the following steps to start the project on **local environment**:
 
 ### Gigalixir
 Gigalixir is a Platform as a Service designed by and for Elixir developers.
-The application was ***deployed*** and is currently running remotely at **Gigalixir** on `https://currency-convertion.gigalixirapp.com/`
+The application was ***deployed*** and is currently running remotely at **Gigalixir** on `https://currency-convertion.gigalixirapp.com/`.
+We already have **four users inserted** whose ID's are ranging from 1 to 4.
+
