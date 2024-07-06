@@ -1,0 +1,15 @@
+{
+    "skip_files": [
+        "lib/currency_convertion/application.ex",
+        "lib/currency_convertion_web/controllers",
+        "lib/currency_convertion_web.ex",
+        "lib/currency_convertion_web/telemetry.ex",
+        "lib/currency_convertion_web/router.ex",
+        "lib/currency_convertion_web/views/error_helpers",
+        "test/support/data_case.ex"
+    ],
+    "coverage_options": {
+        "treat_no_relevant_lines_as_covered": true,
+        "minimum_coverage": 90
+    }
+}
