@@ -133,9 +133,11 @@
               "application/json": {
                 "data": {
                   "date_time": "2024-07-06T12:36:00",
-                  "destiny_currency": "USD",
-                  "origin_currency": "BRL",
-                  "rate": 5.47542,
+                  "destiny_amount": 17.828463,
+                  "destiny_currency": "BRL",
+                  "origin_amount": 3,
+                  "origin_currency": "EUR",
+                  "rate": 5.942821,
                   "transaction_id": "7da853f7-c6ee-464b-85b6-b39fda6e8110",
                   "user_id": 1
                 }
