@@ -54,7 +54,7 @@ In this project we are using the `Exchange Rates Data` API to delivering exchang
 - Application layer = in this layer we have the main features of the application, such as list transactions, query user, add new transaction.
 - Presentation layer = this is the layer where we have controllers and views, responsible for receiving requests and displaying relevant data to the user.
 
-## Start the project
+## Start the project locally
 To run this project **locally**, you must have **postgres** database installed (or docker) and running, **Elixir** and **Phoenix** framework.
 Take the following steps to start the project on **local environment**:
 1 - Clone the project: `git clone https://github.com/wagner-de-carvalho/currency_convertion.git`
@@ -65,7 +65,12 @@ Take the following steps to start the project on **local environment**:
 6 - Run the **seeds** file to create users: `mix run priv/repo/seeds.exs`;
 7 - Start the application: `iex -S mix phx.server`.
 
-### Gigalixir
+### Swagger UI - API Documentation
+Use swagger API documentation to run tests locally:
+`http://localhost:4000/api/swagger/index.html`
+
+
+### Gigalixir - project running remotely
 Gigalixir is a Platform as a Service designed by and for Elixir developers.
 The application was ***deployed*** and is currently running remotely at **Gigalixir** on `https://currency-convertion.gigalixirapp.com/`.
 We already have **four users inserted** whose ID's are ranging from 1 to 4.
