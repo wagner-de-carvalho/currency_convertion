@@ -45,7 +45,8 @@ defmodule CurrencyConvertion.MixProject do
       {:tesla, "~> 1.9"},
       {:ex_machina, "~> 2.8", only: :test},
       {:bypass, "~> 2.1", only: :test},
-      {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:mox, "~> 1.1"}
     ]
   end
 
