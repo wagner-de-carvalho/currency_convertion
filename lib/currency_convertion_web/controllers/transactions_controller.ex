@@ -3,8 +3,8 @@ defmodule CurrencyConvertionWeb.TransactionsController do
   Transactions controller
   """
   use CurrencyConvertionWeb, :controller
-  alias CurrencyConvertion.ApiLayer.Client
   alias CurrencyConvertion.Users.Transaction
+  alias CurrencyConvertion.Users.Transactions
   alias CurrencyConvertion.Users.Users
   alias CurrencyConvertionWeb.FallbackController
 
@@ -16,7 +16,7 @@ defmodule CurrencyConvertionWeb.TransactionsController do
     url = Map.get(params, "url", @base_url)
 
     with {:ok, data} <-
-           client().call(params["from"], params["to"], params["amount"], url),
+           Transactions.exchange(params["from"], params["to"], params["amount"], url),
          %Transaction{} = transaction <- Users.add_transaction(params["user_id"], data) do
       conn
       |> put_status(:created)
@@ -32,9 +32,5 @@ defmodule CurrencyConvertionWeb.TransactionsController do
       |> put_status(:ok)
       |> render(:list, transactions: transactions)
     end
-  end
-
-  defp client do
-    Application.get_env(:currency_convertion, :api_layer_client, Client)
   end
 end

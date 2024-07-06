@@ -2,9 +2,13 @@ defmodule CurrencyConvertionWeb.TransactionsControllerTest do
   @moduledoc """
   Tests for module transactions_controller
   """
-  use CurrencyConvertionWeb.ConnCase
+  use CurrencyConvertionWeb.ConnCase, async: true
+  import Mox
+  alias CurrencyConvertion.ApiLayer.ClientMock
   alias CurrencyConvertion.Factory
   alias CurrencyConvertion.Users.Users
+
+  setup :verify_on_exit!
 
   describe "list/2" do
     test "lists all user's transactions", %{conn: conn} do
@@ -34,6 +38,12 @@ defmodule CurrencyConvertionWeb.TransactionsControllerTest do
     test "creates a transaction for a certain user", %{conn: conn} do
       user = Factory.insert(:user)
       params = %{amount: 2, from: "USD", to: "BRL", user_id: user.id}
+
+      expected_response =
+        {:ok, %{amount: 2, from: "USD", rate: 5.460204, result: 10.920408, to: "BRL"}}
+
+      ClientMock
+      |> expect(:call, fn _, _, _, _ -> expected_response end)
 
       response =
         conn
