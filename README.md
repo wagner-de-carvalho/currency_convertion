@@ -47,6 +47,8 @@ Another motivation is the fact that this programmer has already had knowledge of
 
 ### External API
 In this project we are using the `Exchange Rates Data` API to delivering exchanging rates data for more than 170 world currencies.
+
+**API documentation**
 [APILayer documentation](https://apilayer.com/marketplace/exchangerates_data-api#endpoints)
 
 ## Separation of layers
