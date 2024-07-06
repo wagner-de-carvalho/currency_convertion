@@ -4,9 +4,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-env:
-  EXCHANGE_API_KEY: ${{ vars.EXCHANGE_API_KEY }}
-
 jobs:
   build:
 
