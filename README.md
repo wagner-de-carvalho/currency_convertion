@@ -74,14 +74,14 @@ config :currency_convertion, CurrencyConvertion.Repo,
 ```shell
 export EXCHANGE_API_KEY=your-api-key
 ``` 
-If you do not have one, you can create an account on [APILayer](https://apilayer.com) for free;
+If you do not have one, you can create an account on [APILayer](https://apilayer.com) for free.
 
 ```shell
 git clone https://github.com/wagner-de-carvalho/currency_convertion.git
 mix deps.get
 export EXCHANGE_API_KEY=your-api-key
 mix ecto.setup
-mix run priv/repo/seeds.exs
+mix phx.swagger.generate
 iex -S mix phx.server
 ```
 
@@ -96,6 +96,7 @@ Use swagger API documentation to run tests locally:
 Gigalixir is a Platform as a Service designed by and for Elixir developers.
 The application was ***deployed*** and is currently running remotely at **Gigalixir** on `https://currency-convertion.gigalixirapp.com/`.
 In order to make HTTP requests, change your **localhost:4000** environment to remote environment:
+
 ```shell
 curl https://currency-convertion.gigalixirapp.com/api/users/1/transactions
 ```
